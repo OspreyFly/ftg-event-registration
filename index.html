@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FTG Event Responses</title>
+<style>
+:root{font-family:system-ui,-apple-system,Segoe UI,sans-serif;color:#e9eef6;background:#101827}*{box-sizing:border-box}body{margin:0;padding:24px}main{max-width:900px;margin:auto}header{text-align:center;margin:24px 0 30px}h1{font-size:clamp(26px,5vw,42px);margin:8px}p{color:#aebdd1}.panel{background:#1c283b;border:1px solid #34445c;border-radius:16px;padding:22px;margin-bottom:20px}form{display:flex;gap:12px;flex-wrap:wrap;align-items:end}label{display:grid;gap:6px;flex:1;min-width:180px}input,select,button{padding:12px;border-radius:9px;border:1px solid #5d718c;font:inherit}input,select{background:#0d1727;color:white}button{background:#f5a43c;color:#172132;border:0;font-weight:700;cursor:pointer}button:hover{filter:brightness(1.08)}.status{min-height:22px;margin-top:12px}.columns{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.group{border-radius:12px;background:#152237;padding:16px;min-height:180px}.group h2{font-size:20px;margin:0 0 14px}.group ul{padding-left:18px;overflow-wrap:anywhere}.group li{margin-bottom:8px}.count{float:right;color:#aebdd1}.yes{border-top:4px solid #51c68c}.maybe{border-top:4px solid #f4bf5d}.no{border-top:4px solid #e57b7b}.feed li{margin-bottom:10px}.feed span{color:#aebdd1;font-size:13px}.note{font-size:13px}@media(max-width:640px){.columns{grid-template-columns:1fr}}
+</style>
+</head>
+<body><main>
+<header><div style="font-size:44px">🎃</div><h1>FTG Event Registration</h1><p>Register and see who is attending.</p></header>
+<section class="panel"><h2>Submit your response</h2><form id="voteForm" method="POST" target="submitFrame">
+<label>Your name<input name="name" maxlength="80" autocomplete="name" required placeholder="First and last name"></label>
+<label>Will you attend?<select name="response" required><option>Yes</option><option>Maybe</option><option>No</option></select></label>
+<button type="submit">Submit</button></form><iframe name="submitFrame" id="submitFrame" hidden title="Submission response"></iframe>
+<div class="status" id="submitStatus" role="status"></div><p class="note">Your name and response will be visible to anyone who opens this page. Please submit only your own response.</p></section>
+<section class="panel"><h2>Current responses</h2><p id="loadStatus">Connecting…</p><div class="columns" id="columns"></div></section>
+<section class="panel"><h2>Recent activity</h2><ul class="feed" id="feed"></ul></section>
+</main>
+<script>
+// REPLACE with the Google Apps Script Web App /exec URL.
+const API_URL = 'https://script.google.com/macros/s/AKfycbxbGxfjj_zhe90ljBolBKXB5CG1JNmByZh-tENMEXAp3l2c9xsf2YculEGC9nwApzAh/exec';
+let lastResponses = [];
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function render(responses){
+  lastResponses = responses;
+  const groups=['Yes','Maybe','No'];
+  document.getElementById('columns').innerHTML=groups.map(g=>{
+    const entries=responses.filter(r=>r.response===g);
+    return `<div class="group ${g.toLowerCase()}"><h2>${g}<span class="count">${entries.length}</span></h2><ul>${entries.map(r=>`<li>${escapeHtml(r.name)}</li>`).join('')}</ul></div>`;
+  }).join('');
+  document.getElementById('feed').innerHTML=[...responses].reverse().slice(0,15).map(r=>`<li><strong>${escapeHtml(r.name)}</strong> — ${escapeHtml(r.response)} <span>${escapeHtml(new Date(r.timestamp).toLocaleString())}</span></li>`).join('');
+  document.getElementById('loadStatus').textContent=`${responses.length} submissions · Refreshes every 10 seconds`;
+}
+function refresh(){
+ if(!API_URL.startsWith('https://')){document.getElementById('loadStatus').textContent='Configure the Apps Script URL in index.html first.';return;}
+ const callback='ftgCallback_'+Date.now()+'_'+Math.floor(Math.random()*100000);
+ const script=document.createElement('script');
+ const timer=setTimeout(()=>{cleanup();document.getElementById('loadStatus').textContent='Unable to load responses. Check deployment access.';},8000);
+ function cleanup(){clearTimeout(timer);delete window[callback];script.remove();}
+ window[callback]=data=>{cleanup();render(data.responses||[]);};
+ script.onerror=()=>{cleanup();document.getElementById('loadStatus').textContent='Connection error.';};
+ script.src=API_URL+'?callback='+encodeURIComponent(callback)+'&t='+Date.now();
+ document.head.appendChild(script);
+}
+let waiting=false;
+document.getElementById('voteForm').addEventListener('submit',e=>{
+ if(!API_URL.startsWith('https://')){e.preventDefault();alert('Configure the Apps Script URL first.');return;}
+ e.currentTarget.action=API_URL;
+ waiting=true;
+ document.getElementById('submitStatus').textContent='Submitting…';
+});
+document.getElementById('submitFrame').addEventListener('load',()=>{
+ if(!waiting)return;
+ waiting=false;
+ document.getElementById('submitStatus').textContent='Submission sent. Check the live list shortly. If it does not appear, contact the organizer.';
+ document.getElementById('voteForm').reset();
+ setTimeout(refresh,1800);
+});
+refresh();setInterval(refresh,10000);
+</script></body></html>
