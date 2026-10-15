@@ -2,60 +2,50 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>FTG Event Responses</title>
+<meta name="theme-color" content="#140c0b">
+<title>FTG International | Pumpkin Carving Contest</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Creepster&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-:root{font-family:system-ui,-apple-system,Segoe UI,sans-serif;color:#e9eef6;background:#101827}*{box-sizing:border-box}body{margin:0;padding:24px}main{max-width:900px;margin:auto}header{text-align:center;margin:24px 0 30px}h1{font-size:clamp(26px,5vw,42px);margin:8px}p{color:#aebdd1}.panel{background:#1c283b;border:1px solid #34445c;border-radius:16px;padding:22px;margin-bottom:20px}form{display:flex;gap:12px;flex-wrap:wrap;align-items:end}label{display:grid;gap:6px;flex:1;min-width:180px}input,select,button{padding:12px;border-radius:9px;border:1px solid #5d718c;font:inherit}input,select{background:#0d1727;color:white}button{background:#f5a43c;color:#172132;border:0;font-weight:700;cursor:pointer}button:hover{filter:brightness(1.08)}.status{min-height:22px;margin-top:12px}.columns{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.group{border-radius:12px;background:#152237;padding:16px;min-height:180px}.group h2{font-size:20px;margin:0 0 14px}.group ul{padding-left:18px;overflow-wrap:anywhere}.group li{margin-bottom:8px}.count{float:right;color:#aebdd1}.yes{border-top:4px solid #51c68c}.maybe{border-top:4px solid #f4bf5d}.no{border-top:4px solid #e57b7b}.feed li{margin-bottom:10px}.feed span{color:#aebdd1;font-size:13px}.note{font-size:13px}@media(max-width:640px){.columns{grid-template-columns:1fr}}
+:root{--orange:#ff801f;--amber:#ffc36a;--cream:#fff0d9;--muted:#d3bfae;--panel:rgba(18,11,13,.87);--border:rgba(255,148,52,.38);font-family:Nunito,system-ui,sans-serif;color:var(--cream);background:#0a0c12}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;background:linear-gradient(180deg,rgba(4,7,15,.18) 0%,rgba(8,6,11,.6) 46%,#09080b 100%),url('pumpkin-background.png') center top / cover fixed no-repeat}body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(ellipse at 50% 25%,transparent 5%,rgba(0,0,0,.36) 100%)}.shell{position:relative;z-index:1;width:min(1120px,calc(100% - 32px));margin:auto;padding:20px 0 65px}.hero{height:clamp(220px,32vw,440px);display:flex;flex-direction:column;justify-content:flex-end;align-items:center;text-align:center;padding-bottom:20px}.hero .eyebrow{font-size:clamp(12px,1.8vw,16px);font-weight:900;letter-spacing:.27em;text-transform:uppercase;text-shadow:0 2px 9px #000}.hero h1{font-family:Creepster,Georgia,serif;font-size:clamp(40px,8vw,94px);letter-spacing:.035em;font-weight:400;color:#ff8b23;text-shadow:0 3px 0 #491409,0 0 28px #f56718,0 6px 25px #000;margin:0;line-height:1.02}.hero p{max-width:640px;margin:9px 0 0;color:#fff4df;font-weight:800;text-shadow:0 2px 9px #000}.panel{background:var(--panel);backdrop-filter:blur(14px);border:1px solid var(--border);border-radius:22px;padding:clamp(18px,3vw,30px);box-shadow:0 15px 45px #0009,inset 0 1px #ffdfb51b;margin:20px 0;position:relative;overflow:hidden}.panel:before{content:"";position:absolute;inset:0 0 auto;height:2px;background:linear-gradient(90deg,transparent,#ff982c,transparent);opacity:.75}.section-heading{font-family:Creepster,Georgia,serif;font-weight:400;font-size:clamp(29px,4vw,43px);letter-spacing:.05em;margin:0 0 8px;color:#ffae51;text-shadow:0 0 14px #ff6b1733}.subtext{color:var(--muted);margin:0 0 22px}.field-label{display:block;font-weight:900;margin-bottom:9px;color:#ffe3bc}input[type=text]{width:100%;border-radius:12px;background:#100e14;border:1px solid #a76843;padding:15px 17px;color:#fff;font:inherit;outline:none}input[type=text]:focus{border-color:#ffae51;box-shadow:0 0 0 3px #ff8c302d}.choice-title{font-weight:900;margin:24px 0 12px;color:#ffe3bc}.choices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}.choice{position:relative;display:flex;align-items:flex-start;gap:12px;padding:17px 15px;cursor:pointer;border-radius:16px;background:#140f14d9;border:1px solid #74492e;transition:transform .18s,border-color .18s,box-shadow .18s;min-height:165px}.choice:hover{transform:translateY(-3px);border-color:#ffab52}.choice:has(input:checked){border-color:#ffa43e;background:#2b180fe8;box-shadow:0 0 0 1px #ff9c4c,0 0 25px #ff6b1733}.choice input{position:absolute;opacity:0}.choice:has(input:focus-visible){outline:3px solid #fff;outline-offset:3px}.choice .emoji{font-size:30px;line-height:1.2}.choice strong{display:block;font-size:18px;margin-bottom:6px;color:#ffd7a5}.choice .description{font-size:13px;line-height:1.5;color:#f0d8c5}.choice small{display:block;color:#ffb65e;font-weight:900;margin-top:8px}.submit{display:block;width:min(430px,100%);margin:24px auto 0;padding:16px 22px;border:0;border-radius:12px;background:linear-gradient(180deg,#ffb452,#ff6b0b);box-shadow:0 6px 0 #79320c,0 12px 26px #ff690944;color:#2d1104;font:900 18px Nunito,system-ui;cursor:pointer;transition:transform .15s,filter .15s}.submit:hover{filter:brightness(1.1);transform:translateY(-2px)}.submit:active{transform:translateY(3px)}.status{min-height:23px;margin:18px 0 0;text-align:center;font-weight:800;color:#ffcf8d}.privacy{font-size:12px;color:#c6ad9c;text-align:center;margin:15px 0 0}.dashboard-head{display:flex;justify-content:space-between;gap:15px;align-items:center;flex-wrap:wrap}.live{display:inline-flex;gap:8px;align-items:center;font-size:12px;font-weight:900;color:#a9ffb6;letter-spacing:.12em;text-transform:uppercase}.live:before{content:"";width:9px;height:9px;border-radius:50%;background:#67e889;box-shadow:0 0 14px #67e889;animation:pulse 2s infinite}@keyframes pulse{50%{opacity:.35}}#loadStatus{color:var(--muted);font-size:13px;margin:0 0 17px}.columns{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.group{padding:19px;border-radius:16px;background:linear-gradient(145deg,rgba(45,28,23,.92),rgba(12,11,15,.95));border:1px solid #805239;min-height:190px}.group.yes{border-top:4px solid #83d891}.group.maybe{border-top:4px solid #ffc35d}.group.no{border-top:4px solid #ff8d7e}.group-top{display:flex;justify-content:space-between;align-items:center;gap:7px}.group h3{font-size:21px;margin:0}.group.yes h3{color:#a2f3ac}.group.maybe h3{color:#ffcc6b}.group.no h3{color:#ffaaa0}.count{font-size:30px;font-weight:900;color:#fff}.group-desc{font-size:12px;line-height:1.4;color:#d9c3b0;min-height:52px;margin:10px 0}.group ul{list-style:none;margin:14px 0 0;padding:12px 0 0;border-top:1px solid #ffffff26}.group li{padding:7px 0;overflow-wrap:anywhere}.group li:before{content:"✦";color:#ffa349;margin-right:9px}.empty{color:#a8958d;font-style:italic;font-size:13px}.feed{list-style:none;padding:0;margin:5px 0 0;display:grid;gap:10px}.feed li{display:flex;justify-content:space-between;gap:12px;align-items:center;border:1px solid #ffffff1a;background:#ffffff08;border-radius:12px;padding:12px 15px}.feed-name{font-weight:900}.feed-meta{color:#c7b3a3;font-size:12px}.pill{display:inline-block;padding:5px 10px;border-radius:100px;font-size:12px;font-weight:900;background:#50321d;color:#ffc184}.pill.yes{background:#20462b;color:#a2f3ac}.pill.maybe{background:#4d3615;color:#ffd479}.pill.no{background:#4b2625;color:#ffaaa0}.footer{text-align:center;color:#c9aa92;font-size:12px;margin-top:25px;text-shadow:0 2px 5px #000}.bat{position:absolute;top:14px;right:22px;font-size:27px;opacity:.7}@media(max-width:720px){body{background-attachment:scroll;background-size:auto 620px;background-color:#09080b}.hero{height:260px}.choices,.columns{grid-template-columns:1fr}.choice{min-height:auto}.group-desc{min-height:0}.shell{width:min(100% - 22px,1120px)}.panel{border-radius:17px}.feed li{align-items:flex-start}.hero h1{font-size:50px}}@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
 </style>
 </head>
-<body><main>
-<header><div style="font-size:44px">🎃</div><h1>FTG Event Registration</h1><p>Register and see who is attending.</p></header>
-<section class="panel"><h2>Submit your response</h2><form id="voteForm" method="POST" target="submitFrame">
-<label>Your name<input name="name" maxlength="80" autocomplete="name" required placeholder="First and last name"></label>
-<label>Will you attend?<select name="response" required><option>Yes</option><option>Maybe</option><option>No</option></select></label>
-<button type="submit">Submit</button></form><iframe name="submitFrame" id="submitFrame" hidden title="Submission response"></iframe>
-<div class="status" id="submitStatus" role="status"></div><p class="note">Your name and response will be visible to anyone who opens this page. Please submit only your own response.</p></section>
-<section class="panel"><h2>Current responses</h2><p id="loadStatus">Connecting…</p><div class="columns" id="columns"></div></section>
-<section class="panel"><h2>Recent activity</h2><ul class="feed" id="feed"></ul></section>
+<body><main class="shell">
+<header class="hero"><div class="eyebrow">FTG International Presents</div><h1>Pumpkin Carving Contest</h1><p>🎃 Dare to join the carving crew? 🎃</p></header>
+<section class="panel"><span class="bat" aria-hidden="true">🦇</span><h2 class="section-heading">Enter if you dare...</h2><p class="subtext">Tell us whether you'll join the pumpkin-carving festivities!</p>
+<form id="voteForm" method="POST" target="submitFrame"><label class="field-label" for="name">Your name</label><input id="name" type="text" name="name" maxlength="80" autocomplete="name" required placeholder="Enter your first and last name">
+<div class="choice-title">Will you participate?</div><div class="choices">
+<label class="choice"><input type="radio" name="response" value="Yes" checked required><span class="emoji" aria-hidden="true">🎃</span><span><strong>Yes!</strong><span class="description">Yes, I would like to participate and will enter the raffle for a pumpkin.</span></span></label>
+<label class="choice"><input type="radio" name="response" value="Maybe" required><span class="emoji" aria-hidden="true">🕯️</span><span><strong>Maybe...</strong><span class="description">Maybe, if someone can not make it, I would participate in their place.</span><small>NO GUARANTEES</small></span></label>
+<label class="choice"><input type="radio" name="response" value="No" required><span class="emoji" aria-hidden="true">👻</span><span><strong>No, thanks!</strong><span class="description">No, but I'll cheer them on!</span></span></label>
+</div><button class="submit" type="submit">🎃 Submit My Response</button></form>
+<iframe name="submitFrame" id="submitFrame" hidden title="Submission response"></iframe><div class="status" id="submitStatus" role="status" aria-live="polite"></div><p class="privacy">Your name and choice will appear publicly on this page. Please submit only your own response.</p></section>
+<section class="panel"><div class="dashboard-head"><h2 class="section-heading">The Gathering</h2><span class="live">Live Responses</span></div><p id="loadStatus" aria-live="polite">Connecting to the haunted ledger...</p><div class="columns" id="columns"></div></section>
+<section class="panel"><h2 class="section-heading">Whispers from the Crypt</h2><p class="subtext">Recent responses from the FTG crew</p><ul class="feed" id="feed"></ul></section>
+<footer class="footer">FTG International • A frightfully fun company event • 🎃</footer>
 </main>
 <script>
-// REPLACE with the Google Apps Script Web App /exec URL.
+// IMPORTANT: Paste the SAME Google Apps Script /exec URL used in your working website.
 const API_URL = 'https://script.google.com/macros/s/AKfycbxbGxfjj_zhe90ljBolBKXB5CG1JNmByZh-tENMEXAp3l2c9xsf2YculEGC9nwApzAh/exec';
-let lastResponses = [];
 function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+const descriptions={Yes:'Entering the pumpkin raffle',Maybe:'Backup participant · No guarantees',No:'Cheering everyone on'};
 function render(responses){
-  lastResponses = responses;
-  const groups=['Yes','Maybe','No'];
-  document.getElementById('columns').innerHTML=groups.map(g=>{
-    const entries=responses.filter(r=>r.response===g);
-    return `<div class="group ${g.toLowerCase()}"><h2>${g}<span class="count">${entries.length}</span></h2><ul>${entries.map(r=>`<li>${escapeHtml(r.name)}</li>`).join('')}</ul></div>`;
-  }).join('');
-  document.getElementById('feed').innerHTML=[...responses].reverse().slice(0,15).map(r=>`<li><strong>${escapeHtml(r.name)}</strong> — ${escapeHtml(r.response)} <span>${escapeHtml(new Date(r.timestamp).toLocaleString())}</span></li>`).join('');
-  document.getElementById('loadStatus').textContent=`${responses.length} submissions · Refreshes every 10 seconds`;
+ const groups=[['Yes','🎃'],['Maybe','🕯️'],['No','👻']];
+ document.getElementById('columns').innerHTML=groups.map(([g,emoji])=>{const entries=responses.filter(r=>r.response===g);return `<article class="group ${g.toLowerCase()}"><div class="group-top"><h3>${emoji} ${g}</h3><span class="count">${entries.length}</span></div><p class="group-desc">${descriptions[g]}</p><ul>${entries.length?entries.map(r=>`<li>${escapeHtml(r.name)}</li>`).join(''):'<li class="empty">No souls have signed up yet...</li>'}</ul></article>`}).join('');
+ document.getElementById('feed').innerHTML=[...responses].reverse().slice(0,15).map(r=>`<li><div><div class="feed-name">${escapeHtml(r.name)}</div><div class="feed-meta">${escapeHtml(new Date(r.timestamp).toLocaleString())}</div></div><span class="pill ${r.response.toLowerCase()}">${escapeHtml(r.response)}</span></li>`).join('')||'<li class="empty">The crypt is quiet... for now.</li>';
+ document.getElementById('loadStatus').textContent=`${responses.length} total submissions · Refreshes every 10 seconds`;
 }
 function refresh(){
- if(!API_URL.startsWith('https://')){document.getElementById('loadStatus').textContent='Configure the Apps Script URL in index.html first.';return;}
- const callback='ftgCallback_'+Date.now()+'_'+Math.floor(Math.random()*100000);
- const script=document.createElement('script');
- const timer=setTimeout(()=>{cleanup();document.getElementById('loadStatus').textContent='Unable to load responses. Check deployment access.';},8000);
- function cleanup(){clearTimeout(timer);delete window[callback];script.remove();}
- window[callback]=data=>{cleanup();render(data.responses||[]);};
- script.onerror=()=>{cleanup();document.getElementById('loadStatus').textContent='Connection error.';};
- script.src=API_URL+'?callback='+encodeURIComponent(callback)+'&t='+Date.now();
- document.head.appendChild(script);
+ if(!API_URL.startsWith('https://')){document.getElementById('loadStatus').textContent='Add your Apps Script /exec URL to index.html to connect live results.';return;}
+ const callback='ftgCallback_'+Date.now()+'_'+Math.floor(Math.random()*100000);const script=document.createElement('script');let done=false;
+ const timer=setTimeout(()=>{cleanup();document.getElementById('loadStatus').textContent='Unable to load responses. Check Apps Script deployment access.';},8000);
+ function cleanup(){if(done)return;done=true;clearTimeout(timer);delete window[callback];script.remove();}
+ window[callback]=data=>{cleanup();render(Array.isArray(data.responses)?data.responses:[]);};
+ script.onerror=()=>{cleanup();document.getElementById('loadStatus').textContent='Connection error. Check Apps Script deployment.';};
+ script.src=API_URL+'?callback='+encodeURIComponent(callback)+'&t='+Date.now();document.head.appendChild(script);
 }
 let waiting=false;
-document.getElementById('voteForm').addEventListener('submit',e=>{
- if(!API_URL.startsWith('https://')){e.preventDefault();alert('Configure the Apps Script URL first.');return;}
- e.currentTarget.action=API_URL;
- waiting=true;
- document.getElementById('submitStatus').textContent='Submitting…';
-});
-document.getElementById('submitFrame').addEventListener('load',()=>{
- if(!waiting)return;
- waiting=false;
- document.getElementById('submitStatus').textContent='Submission sent. Check the live list shortly. If it does not appear, contact the organizer.';
- document.getElementById('voteForm').reset();
- setTimeout(refresh,1800);
-});
+document.getElementById('voteForm').addEventListener('submit',e=>{if(!API_URL.startsWith('https://')){e.preventDefault();alert('Configure your Apps Script URL first.');return;}e.currentTarget.action=API_URL;waiting=true;document.getElementById('submitStatus').textContent='Sending your response to the crypt...';});
+document.getElementById('submitFrame').addEventListener('load',()=>{if(!waiting)return;waiting=false;document.getElementById('submitStatus').textContent='Response sent! Check the live list shortly to confirm it was saved.';document.getElementById('voteForm').reset();setTimeout(refresh,1800);});
 refresh();setInterval(refresh,10000);
 </script></body></html>
