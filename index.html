@@ -119,7 +119,9 @@ const EVENT_CONFIG = {
 };
 (function eventController(){
   const start = new Date(EVENT_CONFIG.start).getTime();
-  const end = start + EVENT_CONFIG.durationMinutes*60000;
+  let competitionStart = null;
+  let competitionEnabled = false;
+  let serverStateReceived = false;
   const stage = document.getElementById('event-stage');
   const timer = document.getElementById('event-timer');
   const message = document.getElementById('event-message');
@@ -127,7 +129,7 @@ const EVENT_CONFIG = {
   const grid = document.getElementById('winner-grid');
   let announced = false;
   const testMode = new URLSearchParams(location.search).get("test") === "1";
-  if(testMode){const badge=document.createElement("div");badge.textContent="🧪 TEST MODE — Results can be revealed and reset using Rules!B12";badge.style.cssText="text-align:center;padding:10px;color:#ffe0a1;font-weight:900;background:#55300c;border:1px solid #ffa43e;border-radius:12px;margin-bottom:12px";stage.parentElement.prepend(badge);}
+  if(testMode){const badge=document.createElement("div");badge.textContent="🧪 TEST MODE — Start timer: Rules!B15; announce winners: Rules!B12";badge.style.cssText="text-align:center;padding:10px;color:#ffe0a1;font-weight:900;background:#55300c;border:1px solid #ffa43e;border-radius:12px;margin-bottom:12px";stage.parentElement.prepend(badge);}
   const fmt = ms => {
     const sec = Math.max(0,Math.ceil(ms/1000));
     const days = Math.floor(sec/86400);
@@ -138,11 +140,20 @@ const EVENT_CONFIG = {
   };
   function tick(){
     if(announced)return;
-    if(testMode){stage.textContent="🧪 Testing Winner Announcement";timer.textContent="🏆";message.textContent="Waiting for Done counting ballots in Google Sheets";note.textContent="Uncheck the box to reset the announcement. Test mode does not affect the live event countdown.";return;}
     const now=Date.now();
-    if(now<start){stage.textContent='Competition Countdown';timer.textContent=fmt(start-now);message.textContent='Carving starts at 4:00 PM on October 30!';note.textContent='Central Time • 21 teams • 60 minutes';}
-    else if(now<end){stage.textContent='🎃 Carving Is Underway!';timer.textContent=fmt(end-now);message.textContent='Keep carving! The clock is ticking.';note.textContent='All carving stops when the timer reaches zero.';}
-    else {stage.textContent='🏆 Awaiting Official Results';timer.textContent='🎃';message.textContent="Time's up! Put down your carving tools!";note.textContent=EVENT_CONFIG.resultsEndpoint?'Ballots are being counted. Winners will appear when counting is confirmed.':'Ballots are being counted. Announcement connection is not configured yet.';}
+    if(!competitionEnabled){
+      stage.textContent=testMode?'🧪 Test Mode — Ready to Start':'Competition Countdown';
+      timer.textContent=now<start?fmt(start-now):'00:00:00';
+      message.textContent='Waiting for the organizer to start the 60-minute timer';
+      note.textContent='Scheduled start: October 30 at 4:00 PM Central • Start Competition: Rules!B15';
+    } else if(competitionStart===null){
+      stage.textContent='Connecting to Competition Clock';timer.textContent='--:--:--';
+      message.textContent='Waiting for the recorded start time';note.textContent='Refresh if this persists.';
+    } else {
+      const remaining=competitionStart+EVENT_CONFIG.durationMinutes*60000-now;
+      if(remaining>0){stage.textContent='🎃 Carving Is Underway!';timer.textContent=fmt(remaining);message.textContent='Keep carving! The clock is ticking.';note.textContent='All carving stops when the timer reaches zero.';}
+      else {stage.textContent='🏆 Awaiting Official Results';timer.textContent='🎃';message.textContent="Time's up! Put down your carving tools!";note.textContent='Ballots are being counted. Winners appear only when counting is confirmed.';}
+    }
   }
   function reveal(winners){
     if(announced || !Array.isArray(winners) || winners.length!==3)return;
@@ -162,18 +173,24 @@ const EVENT_CONFIG = {
   }
   // JSONP avoids cross-origin fetch restrictions for Google Apps Script Web Apps.
   window.pumpkinResultsCallback = function(data){
-    if(data && data.ready === true && Array.isArray(data.winners)){
+    if(!data || typeof data !== 'object')return;
+    serverStateReceived=true;
+    competitionEnabled=data.competitionStarted===true;
+    const timestamp=Date.parse(data.startedAt);
+    competitionStart=competitionEnabled && Number.isFinite(timestamp)?timestamp:null;
+    const finished=competitionStart!==null && Date.now()>=competitionStart+EVENT_CONFIG.durationMinutes*60000;
+    if(data.ready===true && Array.isArray(data.winners) && (testMode || finished)){
       if(!announced)reveal(data.winners);
     } else if(announced){
-      announced=false;grid.hidden=true;grid.replaceChildren();tick();
+      announced=false;grid.hidden=true;grid.replaceChildren();
     }
+    if(!announced)tick();
   };
   function checkResults(){
-    if(!EVENT_CONFIG.resultsEndpoint || (!testMode && Date.now()<end))return;
+    if(!EVENT_CONFIG.resultsEndpoint)return;
     const script=document.createElement('script');
     script.src=EVENT_CONFIG.resultsEndpoint+(EVENT_CONFIG.resultsEndpoint.includes('?')?'&':'?')+'callback=pumpkinResultsCallback&_='+Date.now();
-    script.onerror=()=>script.remove();
-    script.onload=()=>script.remove();
+    script.onerror=()=>script.remove();script.onload=()=>script.remove();
     document.head.appendChild(script);
   }
   tick();setInterval(tick,1000);checkResults();setInterval(checkResults,Math.max(5,EVENT_CONFIG.checkEverySeconds)*1000);
