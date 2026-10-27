@@ -1,11 +1,12 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#140c0b">
+<meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="#140c0b" name="theme-color"/>
 <title>FTG International | Pumpkin Carving Contest</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Creepster&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Creepster&amp;family=Nunito:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet"/>
 <style>
 :root{--orange:#ff801f;--amber:#ffc36a;--cream:#fff0d9;--muted:#d3bfae;--panel:rgba(18,11,13,.87);--border:rgba(255,148,52,.38);font-family:Nunito,system-ui,sans-serif;color:var(--cream);background:#0a0c12}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;background:linear-gradient(180deg,rgba(4,7,15,.18) 0%,rgba(8,6,11,.6) 46%,#09080b 100%),url('pumpkin-background.png') center top / cover fixed no-repeat}body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(ellipse at 50% 25%,transparent 5%,rgba(0,0,0,.36) 100%)}.shell{position:relative;z-index:1;width:min(1120px,calc(100% - 32px));margin:auto;padding:20px 0 65px}.hero{height:clamp(220px,32vw,440px);display:flex;flex-direction:column;justify-content:flex-end;align-items:center;text-align:center;padding-bottom:20px}.hero .eyebrow{font-size:clamp(12px,1.8vw,16px);font-weight:900;letter-spacing:.27em;text-transform:uppercase;text-shadow:0 2px 9px #000}.hero h1{font-family:Creepster,Georgia,serif;font-size:clamp(40px,8vw,94px);letter-spacing:.035em;font-weight:400;color:#ff8b23;text-shadow:0 3px 0 #491409,0 0 28px #f56718,0 6px 25px #000;margin:0;line-height:1.02}.hero p{max-width:640px;margin:9px 0 0;color:#fff4df;font-weight:800;text-shadow:0 2px 9px #000}.panel{background:var(--panel);backdrop-filter:blur(14px);border:1px solid var(--border);border-radius:22px;padding:clamp(18px,3vw,30px);box-shadow:0 15px 45px #0009,inset 0 1px #ffdfb51b;margin:20px 0;position:relative;overflow:hidden}.panel:before{content:"";position:absolute;inset:0 0 auto;height:2px;background:linear-gradient(90deg,transparent,#ff982c,transparent);opacity:.75}.section-heading{font-family:Creepster,Georgia,serif;font-weight:400;font-size:clamp(29px,4vw,43px);letter-spacing:.05em;margin:0 0 8px;color:#ffae51;text-shadow:0 0 14px #ff6b1733}.subtext{color:var(--muted);margin:0 0 22px}.field-label{display:block;font-weight:900;margin-bottom:9px;color:#ffe3bc}input[type=text]{width:100%;border-radius:12px;background:#100e14;border:1px solid #a76843;padding:15px 17px;color:#fff;font:inherit;outline:none}input[type=text]:focus{border-color:#ffae51;box-shadow:0 0 0 3px #ff8c302d}.choice-title{font-weight:900;margin:24px 0 12px;color:#ffe3bc}.choices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}.choice{position:relative;display:flex;align-items:flex-start;gap:12px;padding:17px 15px;cursor:pointer;border-radius:16px;background:#140f14d9;border:1px solid #74492e;transition:transform .18s,border-color .18s,box-shadow .18s;min-height:165px}.choice:hover{transform:translateY(-3px);border-color:#ffab52}.choice:has(input:checked){border-color:#ffa43e;background:#2b180fe8;box-shadow:0 0 0 1px #ff9c4c,0 0 25px #ff6b1733}.choice input{position:absolute;opacity:0}.choice:has(input:focus-visible){outline:3px solid #fff;outline-offset:3px}.choice .emoji{font-size:30px;line-height:1.2}.choice strong{display:block;font-size:18px;margin-bottom:6px;color:#ffd7a5}.choice .description{font-size:13px;line-height:1.5;color:#f0d8c5}.choice small{display:block;color:#ffb65e;font-weight:900;margin-top:8px}.submit{display:block;width:min(430px,100%);margin:24px auto 0;padding:16px 22px;border:0;border-radius:12px;background:linear-gradient(180deg,#ffb452,#ff6b0b);box-shadow:0 6px 0 #79320c,0 12px 26px #ff690944;color:#2d1104;font:900 18px Nunito,system-ui;cursor:pointer;transition:transform .15s,filter .15s}.submit:hover{filter:brightness(1.1);transform:translateY(-2px)}.submit:active{transform:translateY(3px)}.status{min-height:23px;margin:18px 0 0;text-align:center;font-weight:800;color:#ffcf8d}.privacy{font-size:12px;color:#c6ad9c;text-align:center;margin:15px 0 0}.dashboard-head{display:flex;justify-content:space-between;gap:15px;align-items:center;flex-wrap:wrap}.live{display:inline-flex;gap:8px;align-items:center;font-size:12px;font-weight:900;color:#a9ffb6;letter-spacing:.12em;text-transform:uppercase}.live:before{content:"";width:9px;height:9px;border-radius:50%;background:#67e889;box-shadow:0 0 14px #67e889;animation:pulse 2s infinite}@keyframes pulse{50%{opacity:.35}}#loadStatus{color:var(--muted);font-size:13px;margin:0 0 17px}.columns{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.group{padding:19px;border-radius:16px;background:linear-gradient(145deg,rgba(45,28,23,.92),rgba(12,11,15,.95));border:1px solid #805239;min-height:190px}.group.yes{border-top:4px solid #83d891}.group.maybe{border-top:4px solid #ffc35d}.group.no{border-top:4px solid #ff8d7e}.group-top{display:flex;justify-content:space-between;align-items:center;gap:7px}.group h3{font-size:21px;margin:0}.group.yes h3{color:#a2f3ac}.group.maybe h3{color:#ffcc6b}.group.no h3{color:#ffaaa0}.count{font-size:30px;font-weight:900;color:#fff}.group-desc{font-size:12px;line-height:1.4;color:#d9c3b0;min-height:52px;margin:10px 0}.group ul{list-style:none;margin:14px 0 0;padding:12px 0 0;border-top:1px solid #ffffff26}.group li{padding:7px 0;overflow-wrap:anywhere}.group li:before{content:"✦";color:#ffa349;margin-right:9px}.empty{color:#a8958d;font-style:italic;font-size:13px}.feed{list-style:none;padding:0;margin:5px 0 0;display:grid;gap:10px}.feed li{display:flex;justify-content:space-between;gap:12px;align-items:center;border:1px solid #ffffff1a;background:#ffffff08;border-radius:12px;padding:12px 15px}.feed-name{font-weight:900}.feed-meta{color:#c7b3a3;font-size:12px}.pill{display:inline-block;padding:5px 10px;border-radius:100px;font-size:12px;font-weight:900;background:#50321d;color:#ffc184}.pill.yes{background:#20462b;color:#a2f3ac}.pill.maybe{background:#4d3615;color:#ffd479}.pill.no{background:#4b2625;color:#ffaaa0}.footer{text-align:center;color:#c9aa92;font-size:12px;margin-top:25px;text-shadow:0 2px 5px #000}.bat{position:absolute;top:14px;right:22px;font-size:27px;opacity:.7}@media(max-width:720px){body{background-attachment:scroll;background-size:auto 620px;background-color:#09080b}.hero{height:260px}.choices,.columns{grid-template-columns:1fr}.choice{min-height:auto}.group-desc{min-height:0}.shell{width:min(100% - 22px,1120px)}.panel{border-radius:17px}.feed li{align-items:flex-start}.hero h1{font-size:50px}}@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
 
@@ -40,72 +41,61 @@
 .winner-card{padding:22px 13px;background:#321a14;border:1px solid #ffa74c88;border-radius:16px}
 .winner-card h3{color:#ffc786;margin:0 0 10px}.winner-team{font-family:Creepster,Georgia,serif;font-size:42px;color:#fff0d9}.winner-names{font-weight:800;margin-top:7px}
 @media(max-width:720px){.winner-grid{grid-template-columns:1fr}}
+
+/* Registration restored from original FTG signup page */
 </style>
 </head>
 <body><main class="shell">
-<header class="hero"><div class="eyebrow">FTG International Presents</div><h1>Pumpkin Carving Contest</h1><p>🎃 21 teams. 60 minutes. Three frightful awards. 🎃</p><p>OCTOBER 30th</p></header>
-<section class="panel event-panel" id="event-clock" aria-live="polite">
- <div class="event-kicker" id="event-stage">Competition Countdown</div>
- <div class="event-clock" id="event-timer">--:--:--</div>
- <div class="event-message" id="event-message">The carving begins October 30 at 4:00 PM!</div>
- <p class="event-note" id="event-note">All times Central Time (Houston).</p>
- <div class="winner-grid" id="winner-grid" hidden></div>
+<header class="hero"><div class="eyebrow">FTG International Presents</div><h1>Pumpkin Carving Contest</h1><p>🎃 Sign up to carve! 60 minutes. Three frightful awards. 🎃</p><p>OCTOBER 30th</p></header>
+<section aria-live="polite" class="panel event-panel" id="event-clock">
+<div class="event-kicker" id="event-stage">Competition Countdown</div>
+<div class="event-clock" id="event-timer">--:--:--</div>
+<div class="event-message" id="event-message">The carving begins October 30 at 4:00 PM!</div>
+<p class="event-note" id="event-note">All times Central Time (Houston).</p>
+<div class="winner-grid" hidden="" id="winner-grid"></div>
 </section>
-<section class="panel" id="contest-rules" aria-labelledby="rules-heading">
-<span class="bat" aria-hidden="true">🕸️</span>
+<section aria-labelledby="rules-heading" class="panel" id="contest-rules">
+<span aria-hidden="true" class="bat">🕸️</span>
 <h2 class="section-heading" id="rules-heading">🎃 Contest Rules 🎃</h2>
 <p class="rules-intro">Read the rules before entering the carving crypt. A fair fright for everyone!</p>
-<div class="time-banner"><span class="time-icon" aria-hidden="true">⏳</span><strong>60 minutes to carve your masterpiece!</strong><span class="time-icon" aria-hidden="true">🎃</span></div>
+<div class="time-banner"><span aria-hidden="true" class="time-icon">⏳</span><strong>60 minutes to carve your masterpiece!</strong><span aria-hidden="true" class="time-icon">🎃</span></div>
 <div class="rules-grid">
-<div class="rule-item"><span class="rule-number" aria-hidden="true">1</span><p>Each team will have <strong>60 minutes</strong> to complete its pumpkin.</p></div>
-<div class="rule-item"><span class="rule-number" aria-hidden="true">2</span><p>FTG will provide the pumpkins. Teams will draw numbers to determine the order of pumpkin selection.</p></div>
-<div class="rule-item"><span class="rule-number" aria-hidden="true">3</span><p>All carving must take place during the designated contest period. No pre-carved pumpkins are permitted.</p></div>
-<div class="rule-item"><span class="rule-number" aria-hidden="true">4</span><p>Team members may bring their own carving tools or use the basic equipment provided by FTG.</p></div>
-<div class="rule-item"><span class="rule-number" aria-hidden="true">5</span><p><strong>Power tools, chainsaws, and other hazardous equipment are prohibited.</strong></p></div>
-<div class="rule-item"><span class="rule-number" aria-hidden="true">6</span><p>Pumpkins must be carved. Painting alone does not qualify.</p></div>
-<div class="rule-item"><span class="rule-number" aria-hidden="true">7</span><p>Paint, markers, and small decorations are allowed, provided the pumpkin is primarily carved.</p></div>
-<div class="rule-item"><span class="rule-number" aria-hidden="true">8</span><p>Printed templates, stencils, and reference images are allowed.</p></div>
-<div class="rule-item"><span class="rule-number" aria-hidden="true">9</span><p>Each pumpkin must have an opening or design that allows light from an LED candle to shine through.</p></div>
-<div class="rule-item"><span class="rule-number" aria-hidden="true">10</span><p>All carving must stop when the <strong>60-minute timer expires.</strong></p></div>
-<div class="rule-item"><span class="rule-number" aria-hidden="true">11</span><p>Teams must clean their workstations after carving.</p></div>
+<div class="rule-item"><span aria-hidden="true" class="rule-number">1</span><p>Each team will have <strong>60 minutes</strong> to complete its pumpkin.</p></div>
+<div class="rule-item"><span aria-hidden="true" class="rule-number">2</span><p>FTG will provide the pumpkins. Teams will draw numbers to determine the order of pumpkin selection.</p></div>
+<div class="rule-item"><span aria-hidden="true" class="rule-number">3</span><p>All carving must take place during the designated contest period. No pre-carved pumpkins are permitted.</p></div>
+<div class="rule-item"><span aria-hidden="true" class="rule-number">4</span><p>Team members may bring their own carving tools or use the basic equipment provided by FTG.</p></div>
+<div class="rule-item"><span aria-hidden="true" class="rule-number">5</span><p><strong>Power tools, chainsaws, and other hazardous equipment are prohibited.</strong></p></div>
+<div class="rule-item"><span aria-hidden="true" class="rule-number">6</span><p>Pumpkins must be carved. Painting alone does not qualify.</p></div>
+<div class="rule-item"><span aria-hidden="true" class="rule-number">7</span><p>Paint, markers, and small decorations are allowed, provided the pumpkin is primarily carved.</p></div>
+<div class="rule-item"><span aria-hidden="true" class="rule-number">8</span><p>Printed templates, stencils, and reference images are allowed.</p></div>
+<div class="rule-item"><span aria-hidden="true" class="rule-number">9</span><p>Each pumpkin must have an opening or design that allows light from an LED candle to shine through.</p></div>
+<div class="rule-item"><span aria-hidden="true" class="rule-number">10</span><p>All carving must stop when the <strong>60-minute timer expires.</strong></p></div>
+<div class="rule-item"><span aria-hidden="true" class="rule-number">11</span><p>Teams must clean their workstations after carving.</p></div>
 </div>
-<hr class="rules-separator">
+<hr class="rules-separator"/>
 <h2 class="section-heading">🏆 Prizes &amp; Awards</h2>
 <p class="rules-intro">Three awards will recognize outstanding team creations. Voting details will be announced separately.</p>
 <div class="prize-grid">
-<article class="prize-card"><span class="medal" aria-hidden="true">🏆</span><h3>Best Overall</h3><p>The standout pumpkin creation</p></article>
-<article class="prize-card"><span class="medal" aria-hidden="true">👻</span><h3>Scariest</h3><p>The most terrifying design</p></article>
-<article class="prize-card"><span class="medal" aria-hidden="true">🤪</span><h3>Silliest</h3><p>The funniest pumpkin in the patch</p></article>
+<article class="prize-card"><span aria-hidden="true" class="medal">🏆</span><h3>Best Overall</h3><p>The standout pumpkin creation</p></article>
+<article class="prize-card"><span aria-hidden="true" class="medal">👻</span><h3>Scariest</h3><p>The most terrifying design</p></article>
+<article class="prize-card"><span aria-hidden="true" class="medal">🤪</span><h3>Silliest</h3><p>The funniest pumpkin in the patch</p></article>
 </div>
 <p class="prize-note">🎁 Prize amounts will be determined separately.</p>
 </section>
-<section class="panel" id="teams"><span class="bat" aria-hidden="true">🦇</span>
-<div class="dashboard-head"><h2 class="section-heading">The Haunted Team Roster</h2><span class="roster-pill">21 teams · 42 carvers</span></div>
-<p class="subtext">Everyone's in! Partners have been randomly assigned once and are locked in for the contest. Find your partner below.</p>
-<div class="team-grid"><article class="team-card"><div class="team-label">TEAM 01</div><div class="team-names"><span>Samantha Betancourt</span><span class="team-plus">✦</span><span>Noah Goff</span></div></article>
-<article class="team-card"><div class="team-label">TEAM 02</div><div class="team-names"><span>Francisco Gonzales</span><span class="team-plus">✦</span><span>Bryan Pierre</span></div></article>
-<article class="team-card"><div class="team-label">TEAM 03</div><div class="team-names"><span>Shemar Pradia</span><span class="team-plus">✦</span><span>Victoria Rojas</span></div></article>
-<article class="team-card"><div class="team-label">TEAM 04</div><div class="team-names"><span>Javonte Thierry</span><span class="team-plus">✦</span><span>David Kruoch</span></div></article>
-<article class="team-card"><div class="team-label">TEAM 05</div><div class="team-names"><span>Gage Newman</span><span class="team-plus">✦</span><span>Bryce Siegrist</span></div></article>
-<article class="team-card"><div class="team-label">TEAM 06</div><div class="team-names"><span>Brian Manning</span><span class="team-plus">✦</span><span>Isaiah Lozano</span></div></article>
-<article class="team-card"><div class="team-label">TEAM 07</div><div class="team-names"><span>Julian Garcia</span><span class="team-plus">✦</span><span>Jasmine Menchaca</span></div></article>
-<article class="team-card"><div class="team-label">TEAM 08</div><div class="team-names"><span>Mo&#x27;Zaria Robinson</span><span class="team-plus">✦</span><span>Ashlee Crouch</span></div></article>
-<article class="team-card"><div class="team-label">TEAM 09</div><div class="team-names"><span>David Cloyd</span><span class="team-plus">✦</span><span>Ulises Lopez</span></div></article>
-<article class="team-card"><div class="team-label">TEAM 10</div><div class="team-names"><span>Marcus Meza</span><span class="team-plus">✦</span><span>Daniel Mejia</span></div></article>
-<article class="team-card"><div class="team-label">TEAM 11</div><div class="team-names"><span>Jimmy Hatsady</span><span class="team-plus">✦</span><span>Daniel Maldonado</span></div></article>
-<article class="team-card"><div class="team-label">TEAM 12</div><div class="team-names"><span>Mark Blanchard</span><span class="team-plus">✦</span><span>Necii Williams</span></div></article>
-<article class="team-card"><div class="team-label">TEAM 13</div><div class="team-names"><span>Francisco Zamarripa</span><span class="team-plus">✦</span><span>Nathan Parsons</span></div></article>
-<article class="team-card"><div class="team-label">TEAM 14</div><div class="team-names"><span>Javier Trinh</span><span class="team-plus">✦</span><span>Daniel Menchaca</span></div></article>
-<article class="team-card"><div class="team-label">TEAM 15</div><div class="team-names"><span>Dylan Rodriguez</span><span class="team-plus">✦</span><span>ShaCoria Bowman</span></div></article>
-<article class="team-card"><div class="team-label">TEAM 16</div><div class="team-names"><span>Chloe Clark</span><span class="team-plus">✦</span><span>Christian Jordan</span></div></article>
-<article class="team-card"><div class="team-label">TEAM 17</div><div class="team-names"><span>James Bowen</span><span class="team-plus">✦</span><span>Noe Bravo</span></div></article>
-<article class="team-card"><div class="team-label">TEAM 18</div><div class="team-names"><span>LaChelsea Kirksey</span><span class="team-plus">✦</span><span>Aaron Parsons</span></div></article>
-<article class="team-card"><div class="team-label">TEAM 19</div><div class="team-names"><span>Alberto Blanco</span><span class="team-plus">✦</span><span>Clare Seratt</span></div></article>
-<article class="team-card"><div class="team-label">TEAM 20</div><div class="team-names"><span>Jorge Ramirez</span><span class="team-plus">✦</span><span>Francisco Avila</span></div></article>
-<article class="team-card"><div class="team-label">TEAM 21</div><div class="team-names"><span>Karen Hall</span><span class="team-plus">✦</span><span>Daniel Hendon</span></div></article></div>
-
+<section class="panel"><span aria-hidden="true" class="bat">🦇</span><h2 class="section-heading">Enter if you dare...</h2><p class="subtext">Tell us whether you'll join the pumpkin-carving festivities!</p>
+<form id="voteForm" method="POST" target="submitFrame"><label class="field-label" for="name">Your name</label><input autocomplete="name" id="name" maxlength="80" name="name" placeholder="Enter your first and last name" required="" type="text"/>
+<div class="choice-title">Will you participate?</div><div class="choices">
+<label class="choice"><input checked="" name="response" required="" type="radio" value="Yes"/><span aria-hidden="true" class="emoji">🎃</span><span><strong>Yes!</strong><span class="description">Yes, I would like to participate and will enter the raffle for a pumpkin.</span></span></label>
+<label class="choice"><input name="response" required="" type="radio" value="Maybe"/><span aria-hidden="true" class="emoji">🕯️</span><span><strong>Maybe...</strong><span class="description">Maybe, if someone can not make it, I would participate in their place.</span><small>NO GUARANTEES</small></span></label>
+<label class="choice"><input name="response" required="" type="radio" value="No"/><span aria-hidden="true" class="emoji">👻</span><span><strong>No, thanks!</strong><span class="description">No, but I'll cheer them on!</span></span></label>
+</div><button class="submit" type="submit">🎃 Submit My Response</button></form>
+<iframe hidden="" id="submitFrame" name="submitFrame" title="Submission response"></iframe><div aria-live="polite" class="status" id="submitStatus" role="status"></div><p class="privacy">Your name and choice will appear publicly on this page. Please submit only your own response.</p></section><section class="panel"><div class="dashboard-head"><h2 class="section-heading">The Gathering</h2><span class="live">Live Responses</span></div><p aria-live="polite" id="loadStatus">Connecting to the haunted ledger...</p><div class="columns" id="columns"></div></section><section class="panel" id="current-teams">
+<h2 class="section-heading">🎃 Registered Teams</h2>
+<p class="subtext">Only people who register Yes appear here. Existing partnerships are honored when both people register; everyone else is paired with another available participant. Names are displayed exactly as submitted.</p>
+<p id="pairing-status" class="subtext" aria-live="polite">Waiting for registration data...</p>
+<div class="team-grid" id="registered-team-grid"></div>
 </section>
-
+<section class="panel"><h2 class="section-heading">Whispers from the Crypt</h2><p class="subtext">Recent responses from the FTG crew</p><ul class="feed" id="feed"></ul></section>
 <footer class="footer">FTG International • A frightfully fun company event • 🎃</footer>
 </main>
 <script>
@@ -114,7 +104,7 @@
 const EVENT_CONFIG = {
   start: '2026-10-30T16:00:00-05:00',
   durationMinutes: 60,
-  resultsEndpoint: 'https://script.google.com/macros/s/AKfycby4ypxm1SmYEZjnc-YHFzXgdaC_rFIX_8_ktn3SJ17_xtBFePxnRBAs5vWwinK5oqdi/exec', // Paste the deployed Apps Script /exec URL here
+  resultsEndpoint: 'https://script.google.com/macros/s/AKfycby4ypxm1SmYEZjnc-YHFzXgdaC_rFIX_8_ktn3SJ17_xtBFePxnRBAs5vWwinK5oqdi/exec',
   checkEverySeconds: 15
 };
 (function eventController(){
@@ -197,8 +187,6 @@ const EVENT_CONFIG = {
 })();
 </script>
 <script>
-// Team assignments are fixed in this HTML; no form or Apps Script connection required.
-</script><script>
 // Scroll-reactive ghosts drift up along both sides, with gentle idle motion.
 (function floatingGhosts(){
  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
@@ -226,4 +214,78 @@ const EVENT_CONFIG = {
  raf=requestAnimationFrame(frame);
  document.addEventListener('visibilitychange',()=>{if(document.hidden){cancelAnimationFrame(raf)}else{previousScroll=window.scrollY;raf=requestAnimationFrame(frame)}});
 })();
+</script><script>
+// IMPORTANT: Paste the SAME Google Apps Script /exec URL used in your working website.
+const REGISTRATION_API_URL = 'https://script.google.com/macros/s/AKfycbxbGxfjj_zhe90ljBolBKXB5CG1JNmByZh-tENMEXAp3l2c9xsf2YculEGC9nwApzAh/exec';
+const API_URL = REGISTRATION_API_URL;
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+const descriptions={Yes:'Entering the pumpkin raffle',Maybe:'Backup participant · No guarantees',No:'Cheering everyone on'};
+
+// Existing partnerships from the original contest roster.
+const ORIGINAL_PARTNERS = [["Samantha Betancourt", "Noah Goff"], ["Francisco Gonzales", "Bryan Pierre"], ["Shemar Pradia", "Victoria Rojas"], ["Javonte Thierry", "David Kruoch"], ["Gage Newman", "Bryce Siegrist"], ["Brian Manning", "Isaiah Lozano"], ["Julian Garcia", "Jasmine Menchaca"], ["Mo'Zaria Robinson", "Ashlee Crouch"], ["David Cloyd", "Ulises Lopez"], ["Marcus Meza", "Daniel Mejia"], ["Jimmy Hatsady", "Daniel Maldonado"], ["Mark Blanchard", "Necii Williams"], ["Francisco Zamarripa", "Nathan Parsons"], ["Javier Trinh", "Daniel Menchaca"], ["Dylan Rodriguez", "ShaCoria Bowman"], ["Chloe Clark", "Christian Jordan"], ["James Bowen", "Noe Bravo"], ["LaChelsea Kirksey", "Aaron Parsons"], ["Alberto Blanco", "Clare Seratt"], ["Jorge Ramirez", "Francisco Avila"], ["Karen Hall", "Daniel Hendon"]];
+const normalizedName = name => String(name || '').trim().replace(/\s+/g,' ').toLocaleLowerCase();
+function renderTeams(responses) {
+  // Only names actually submitted through registration are displayed.
+  // The original roster is used solely for invisible partner matching.
+  const latest = new Map();
+  for (const response of responses) {
+    const key = normalizedName(response.name);
+    if (key) latest.set(key, response);
+  }
+  const participants = new Map(
+    [...latest].filter(([, r]) => String(r.response).trim().toLowerCase() === 'yes')
+  );
+  const used = new Set();
+  const teams = [];
+  for (let i=0; i<ORIGINAL_PARTNERS.length; i++) {
+    const [a,b] = ORIGINAL_PARTNERS[i];
+    const ak=normalizedName(a), bk=normalizedName(b);
+    if (participants.has(ak) && participants.has(bk)) {
+      teams.push({a:participants.get(ak).name,b:participants.get(bk).name,original:i+1});
+      used.add(ak); used.add(bk);
+    }
+  }
+  // Stable alphabetical ordering prevents reshuffling on every refresh.
+  const unpaired = [...participants]
+    .filter(([key]) => !used.has(key))
+    .map(([,person])=>person.name)
+    .sort((a,b)=>a.localeCompare(b));
+  for (let i=0;i+1<unpaired.length;i+=2) {
+    teams.push({a:unpaired[i],b:unpaired[i+1],original:null});
+  }
+  const waiting = unpaired.length % 2 ? unpaired[unpaired.length-1] : null;
+  const grid=document.getElementById('registered-team-grid');
+  grid.innerHTML=teams.map((team,i)=>`
+    <article class="team-card">
+      <div class="team-label">TEAM ${String(i+1).padStart(2,'0')}${team.original ? ' · ORIGINAL PARTNERS' : ' · NEW PAIRING'}</div>
+      <div class="team-names"><span>${escapeHtml(team.a)}</span><span class="team-plus">✦</span><span>${escapeHtml(team.b)}</span></div>
+    </article>`).join('') + (waiting ? `<article class="team-card"><div class="team-label">AWAITING PARTNER</div><div class="team-names">${escapeHtml(waiting)}</div></article>` : '');
+  document.getElementById('pairing-status').textContent=
+    `${participants.size} registered participants · ${teams.length} paired teams` +
+    (waiting ? ' · 1 awaiting partner' : '') + ' · Provisional until registration closes';
+}
+
+function render(responses){
+ const latest=new Map();
+ for(const r of responses){const key=normalizedName(r.name);if(key)latest.set(key,r);}
+ const current=[...latest.values()];
+ const groups=[['Yes','🎃'],['Maybe','🕯️'],['No','👻']];
+ document.getElementById('columns').innerHTML=groups.map(([g,emoji])=>{const entries=current.filter(r=>String(r.response).trim().toLowerCase()===g.toLowerCase());return `<article class="group ${g.toLowerCase()}"><div class="group-top"><h3>${emoji} ${g}</h3><span class="count">${entries.length}</span></div><p class="group-desc">${descriptions[g]}</p><ul>${entries.length?entries.map(r=>`<li>${escapeHtml(r.name)}</li>`).join(''):'<li class="empty">No souls have signed up yet...</li>'}</ul></article>`}).join('');
+ document.getElementById('feed').innerHTML=[...responses].reverse().slice(0,15).map(r=>`<li><div><div class="feed-name">${escapeHtml(r.name)}</div><div class="feed-meta">${escapeHtml(new Date(r.timestamp).toLocaleString())}</div></div><span class="pill ${r.response.toLowerCase()}">${escapeHtml(r.response)}</span></li>`).join('')||'<li class="empty">The crypt is quiet... for now.</li>';
+ renderTeams(current);
+ document.getElementById('loadStatus').textContent=`${current.length} registered names · Refreshes every 10 seconds`;
+}
+function refresh(){
+ if(!API_URL.startsWith('https://')){document.getElementById('loadStatus').textContent='Add your Apps Script /exec URL to index.html to connect live results.';return;}
+ const callback='ftgCallback_'+Date.now()+'_'+Math.floor(Math.random()*100000);const script=document.createElement('script');let done=false;
+ const timer=setTimeout(()=>{cleanup();document.getElementById('loadStatus').textContent='Unable to load responses. Check Apps Script deployment access.';},8000);
+ function cleanup(){if(done)return;done=true;clearTimeout(timer);delete window[callback];script.remove();}
+ window[callback]=data=>{cleanup();render(Array.isArray(data.responses)?data.responses:[]);};
+ script.onerror=()=>{cleanup();document.getElementById('loadStatus').textContent='Connection error. Check Apps Script deployment.';};
+ script.src=API_URL+'?callback='+encodeURIComponent(callback)+'&t='+Date.now();document.head.appendChild(script);
+}
+let waiting=false;
+document.getElementById('voteForm').addEventListener('submit',e=>{if(!API_URL.startsWith('https://')){e.preventDefault();alert('Configure your Apps Script URL first.');return;}e.currentTarget.action=API_URL;waiting=true;document.getElementById('submitStatus').textContent='Sending your response to the crypt...';});
+document.getElementById('submitFrame').addEventListener('load',()=>{if(!waiting)return;waiting=false;document.getElementById('submitStatus').textContent='Response sent! Check the live list shortly to confirm it was saved.';document.getElementById('voteForm').reset();setTimeout(refresh,1800);});
+refresh();setInterval(refresh,10000);
 </script></body></html>
