@@ -91,7 +91,33 @@
 <label class="choice"><input name="response" required="" type="radio" value="Maybe"/><span aria-hidden="true" class="emoji">🕯️</span><span><strong>Maybe...</strong><span class="description">Maybe, if someone can not make it, I would participate in their place.</span><small>NO GUARANTEES</small></span></label>
 <label class="choice"><input name="response" required="" type="radio" value="No"/><span aria-hidden="true" class="emoji">👻</span><span><strong>No, thanks!</strong><span class="description">No, but I'll cheer them on!</span></span></label>
 </div><button class="submit" type="submit">🎃 Submit My Response</button></form>
-<iframe hidden="" id="submitFrame" name="submitFrame" title="Submission response"></iframe><div aria-live="polite" class="status" id="submitStatus" role="status"></div><p class="privacy">Your name and choice will appear publicly on this page. Please submit only your own response.</p></section><section class="panel"><div class="dashboard-head"><h2 class="section-heading">The Gathering</h2><span class="live">Live Responses</span></div><p aria-live="polite" id="loadStatus">Connecting to the haunted ledger...</p><div class="columns" id="columns"></div></section><section class="panel" id="current-teams">
+<iframe hidden="" id="submitFrame" name="submitFrame" title="Submission response"></iframe><div aria-live="polite" class="status" id="submitStatus" role="status"></div><p class="privacy">Your name and choice will appear publicly on this page. Please submit only your own response.</p></section><section class="panel"><div class="dashboard-head"><h2 class="section-heading">The Gathering</h2><span class="live">Live Responses</span></div><p aria-live="polite" id="loadStatus">Connecting to the haunted ledger...</p><div class="columns" id="columns"></div></section><section class="panel" id="ready-checkin">
+  <h2 class="section-heading">🎃 Ready to Go?</h2>
+
+  <p class="subtext">
+    Confirm you're here and ready to participate in today's pumpkin carving contest!
+    Only confirmed participants will be included in the final team pool.
+  </p>
+
+  <label class="field-label" for="readyName">Your Name</label>
+
+  <input
+    id="readyName"
+    type="text"
+    maxlength="80"
+    placeholder="Enter your registered name"
+  >
+
+  <button class="submit" id="readyButton" type="button">
+    🎃 READY TO GO!
+  </button>
+
+  <div class="status" id="readyStatus" aria-live="polite"></div>
+
+  <p class="privacy">
+    You must have previously registered Yes to confirm your participation.
+  </p>
+</section><section class="panel" id="current-teams">
 <h2 class="section-heading">🎃 Registered Teams</h2>
 <p class="subtext">Only people who register Yes appear here. Existing partnerships are honored when both people register; everyone else is paired with another available participant. Names are displayed exactly as submitted.</p>
 <p id="pairing-status" class="subtext" aria-live="polite">Waiting for registration data...</p>
@@ -235,8 +261,11 @@ function renderTeams(responses) {
     if (key) latest.set(key, response);
   }
   const participants = new Map(
-    [...latest].filter(([, r]) => String(r.response).trim().toLowerCase() === 'yes')
-  );
+  [...latest].filter(([, r]) =>
+    String(r.response).trim().toLowerCase() === 'yes' &&
+    r.ready === true
+  )
+);
   const used = new Set();
   const teams = [];
   for (let i=0; i<ORIGINAL_PARTNERS.length; i++) {
@@ -286,6 +315,53 @@ function refresh(){
  script.onerror=()=>{cleanup();document.getElementById('loadStatus').textContent='Connection error. Check Apps Script deployment.';};
  script.src=API_URL+'?callback='+encodeURIComponent(callback)+'&t='+Date.now();document.head.appendChild(script);
 }
+document.getElementById('readyButton').addEventListener('click', () => {
+  const name = document.getElementById('readyName').value.trim();
+  const status = document.getElementById('readyStatus');
+  const button = document.getElementById('readyButton');
+
+  if (!name) {
+    status.textContent = 'Please enter your registered name.';
+    return;
+  }
+
+  button.disabled = true;
+  status.textContent = 'Confirming your participation...';
+
+  const form = document.createElement('form');
+  form.method = 'POST';
+  form.action = API_URL;
+  form.target = 'submitFrame';
+  form.style.display = 'none';
+
+  for (const [key, value] of Object.entries({
+    action: 'ready',
+    name: name
+  })) {
+    const input = document.createElement('input');
+    input.name = key;
+    input.value = value;
+    form.appendChild(input);
+  }
+
+  document.body.appendChild(form);
+
+  const frame = document.getElementById('submitFrame');
+
+  frame.addEventListener('load', function onReadyLoad() {
+    frame.removeEventListener('load', onReadyLoad);
+
+    status.textContent =
+      'Confirmation request completed. Check your Ready status in the live list.';
+
+    button.disabled = false;
+    form.remove();
+
+    setTimeout(refresh, 1500);
+  }, { once: true });
+
+  form.submit();
+});
 let waiting=false;
 document.getElementById('voteForm').addEventListener('submit',e=>{if(!API_URL.startsWith('https://')){e.preventDefault();alert('Configure your Apps Script URL first.');return;}e.currentTarget.action=API_URL;waiting=true;document.getElementById('submitStatus').textContent='Sending your response to the crypt...';});
 document.getElementById('submitFrame').addEventListener('load',()=>{if(!waiting)return;waiting=false;document.getElementById('submitStatus').textContent='Response sent! Check the live list shortly to confirm it was saved.';document.getElementById('voteForm').reset();setTimeout(refresh,1800);});
