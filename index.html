@@ -284,16 +284,54 @@ function renderTeams(responses) {
   for (let i=0;i+1<unpaired.length;i+=2) {
     teams.push({a:unpaired[i],b:unpaired[i+1],original:null});
   }
-  const waiting = unpaired.length % 2 ? unpaired[unpaired.length-1] : null;
-  const grid=document.getElementById('registered-team-grid');
-  grid.innerHTML=teams.map((team,i)=>`
+    const waiting = unpaired.length % 2 ? unpaired[unpaired.length - 1] : null;
+
+  const grid = document.getElementById('registered-team-grid');
+
+  grid.innerHTML = teams.map((team, i) => `
     <article class="team-card">
-      <div class="team-label">TEAM ${String(i+1).padStart(2,'0')}${team.original ? ' · ORIGINAL PARTNERS' : ' · NEW PAIRING'}</div>
-      <div class="team-names"><span>${escapeHtml(team.a)}</span><span class="team-plus">✦</span><span>${escapeHtml(team.b)}</span></div>
-    </article>`).join('') + (waiting ? `<article class="team-card"><div class="team-label">AWAITING PARTNER</div><div class="team-names">${escapeHtml(waiting)}</div></article>` : '');
-  document.getElementById('pairing-status').textContent=
-    `${participants.size} registered participants · ${teams.length} paired teams` +
-    (waiting ? ' · 1 awaiting partner' : '') + ' · Provisional until registration closes';
+
+      <div class="team-label" style="
+        font-size: 26px;
+        font-weight: 900;
+        color: #ffbb6e;
+        text-align: center;
+        margin-bottom: 14px;
+      ">
+        🎃 TEAM #${i + 1}
+      </div>
+
+      <div style="
+        text-align: center;
+        font-size: 12px;
+        color: #d3bfae;
+        margin-bottom: 12px;
+      ">
+        ${team.original ? 'ORIGINAL PARTNERS' : 'NEW PAIRING'}
+      </div>
+
+      <div class="team-names">
+        <span>${escapeHtml(team.a)}</span>
+        <span class="team-plus">✦</span>
+        <span>${escapeHtml(team.b)}</span>
+      </div>
+
+    </article>
+  `).join('') + (waiting ? `
+    <article class="team-card">
+      <div class="team-label" style="font-size: 22px; text-align: center;">
+        ⏳ AWAITING PARTNER
+      </div>
+      <div class="team-names">
+        ${escapeHtml(waiting)}
+      </div>
+    </article>
+  ` : '');
+
+  document.getElementById('pairing-status').textContent =
+    `${participants.size} confirmed participants · ${teams.length} paired teams` +
+    (waiting ? ' · 1 awaiting partner' : '') +
+    ' · Team numbers are provisional until finalized';
 }
 
 function render(responses){
